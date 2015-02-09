@@ -1,0 +1,82 @@
+# Written by ICEM CFD 12.0.1, user hassl, Fr Nov 06 13:32:01 CET 2009
+
+begin family GEOM
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 15676300 1
+        end bctype color
+    end solver "Nastran"
+end family GEOM
+
+begin family FOIL_TOP
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 3385560 1
+        end bctype color
+    end solver "Nastran"
+end family FOIL_TOP
+
+begin family FOIL_BOT
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 13675600 1
+        end bctype color
+    end solver "Nastran"
+end family FOIL_BOT
+
+begin family WEST
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 14234500 1
+        end bctype color
+    end solver "Nastran"
+end family WEST
+
+begin family NORTH1
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 5176630 1
+        end bctype color
+    end solver "Nastran"
+end family NORTH1
+
+begin family NORTH2
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 5911550 1
+        end bctype color
+    end solver "Nastran"
+end family NORTH2
+
+begin family EAST
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 8336360 1
+        end bctype color
+    end solver "Nastran"
+end family EAST
+
+begin family SOUTH2
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 3393970 1
+        end bctype color
+    end solver "Nastran"
+end family SOUTH2
+
+begin family SOUTH1
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 15304500 1
+        end bctype color
+    end solver "Nastran"
+end family SOUTH1

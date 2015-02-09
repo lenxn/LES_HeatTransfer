@@ -1,0 +1,15 @@
+* * * boco file read in successfully * * *
+
+nr. of nodes in model:  144854
+
+Scaling factor     : (1.000000,1.000000,1.000000)
+
+nr. of tetra elements:  0
+nr. of prism elements:  0
+nr. of hex   elements:  71868
+nr. of tetra elements:  0
+
+This mesh has block refinements.
+Please provide GGI definitions in CFX.
+
+WARNING : family FLUID has mixed of 2D and 3D elements, this is not allowed in CFX-5.

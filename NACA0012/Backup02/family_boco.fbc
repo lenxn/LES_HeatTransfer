@@ -1,0 +1,37 @@
+# family_boco file written by ICEM HEXA
+"GEOM"
+"GEOM" "color" 5176627
+"FOIL_TOP"
+"FOIL_TOP" "color" 15676283
+"FOIL_BOT"
+"FOIL_BOT" "color" 3385555
+"POINTS"
+"POINTS" "color" 15304499
+"WEST"
+"WEST" "color" 14234528
+"SOUTH"
+"SOUTH" "color" 3393972
+"NORTH"
+"NORTH" "color" 5911547
+"EAST"
+"EAST" "color" 8336365
+"FLUID"
+"FLUID" "color" 13675571
+"WEST_A"
+"WEST_A" "color" 7598899
+"WEST_BT"
+"WEST_BT" "color" 16343603
+"WEST_BB"
+"WEST_BB" "color" 3688446
+"WEST_CT"
+"WEST_CT" "color" 12268482
+"WEST_CB"
+"WEST_CB" "color" 3400848
+"WEST_DT"
+"WEST_DT" "color" 3369718
+"WEST_DB"
+"WEST_DB" "color" 10018611
+"WEST_ET"
+"WEST_ET" "color" 3405418
+"WEST_EB"
+"WEST_EB" "color" 16727871

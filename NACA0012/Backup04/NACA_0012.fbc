@@ -1,0 +1,39 @@
+# family_boco file written by ICEM CFD by hassl on Di Nov 10 15:52:09 CET 2009
+## solver ANSYS CFX
+"GEOM"
+"GEOM" "color" 5176630
+"FOIL_TOP"
+"FOIL_TOP" "color" 15676300
+"FOIL_BOT"
+"FOIL_BOT" "color" 3385560
+"POINTS"
+"POINTS" "color" 15304500
+"WEST"
+"WEST" "color" 14234500
+"SOUTH"
+"SOUTH" "color" 3393970
+"NORTH"
+"NORTH" "color" 5911550
+"EAST"
+"EAST" "color" 8336360
+"FLUID"
+"FLUID" "color" 13675600
+"WEST_A"
+"WEST_A" "color" 7598900
+"WEST_BT"
+"WEST_BT" "color" 16343600
+"WEST_BB"
+"WEST_BB" "color" 3688450
+"WEST_CT"
+"WEST_CT" "color" 12268500
+"WEST_CB"
+"WEST_CB" "color" 3400850
+"WEST_DT"
+"WEST_DT" "color" 3369720
+"WEST_DB"
+"WEST_DB" "color" 10018600
+"WEST_ET"
+"WEST_ET" "color" 3405420
+"WEST_EB"
+"WEST_EB" "color" 16727900
+
