@@ -8,6 +8,7 @@
 %                   wall_heat_flux_transient.csv
 % Description:      File for creating and saving the plots of the data
 %                   obtained from CFX-Post.
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clear all;
@@ -40,3 +41,5 @@ ylabel( 'Wall Heat Flux [W m^-2]' )
 %% Save Plot
 saveas( figure(1), '../images/Wall_Heat_Flux_Plot.png', 'png' )
 
+sum_stat = trapz( x_stat, y_stat )
+sum_trans = trapz( x_trans, y_trans )
