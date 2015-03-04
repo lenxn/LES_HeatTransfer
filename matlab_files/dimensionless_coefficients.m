@@ -13,38 +13,59 @@
 clear all;
 close all;
 
-c = 1.0;
-t = 12/100;
+% Simulation parameters
 
-
-R_LE = 1.1019 * power( t, 2 );  % Radius Leading edge
-
-cp = 1007;             % Air at 25C
-eta = 18.48e-6;         % Dynamic viscosity [kg m?-1 s^-1]
-lambda = 26.06e-3;      % Thermal conductivity [W K^-1 m^-1]
-ypsilon = 15.82e-6;     % Kinematic viscosity [m^2 s?-1]
-w = 66.8;               % Fluid velocity [m s^-1]
-l = R_LE * 2;           % Characteristic length scale [m]
-
-Pr = cp * eta / lambda;
-Re = w * l / ypsilon;
-
-% For cylinder with laminar flow
-Nu = 1.14 * power( Pr, 0.4 ) * power( Re, 0.5 );
-
-Fr = Nu / power( Re, 0.5 );
-
-alpha = Nu * lambda / 1;
-
-%% with alpha from simulation
+c = 1.0;                % [m] Chord length
+t = 12/100;             % [m] Maximum profile height
+w = 66.8;               % [m s^-1] Fluid velocity 
 
 tw = 26 + 273.15;       % Temperature at the wing surface [K]
 tf = 25 + 273.15;       % Temperature of the fluid [K]
-A = 1;                  % Wing surface [m^2]
-Q_dot = 1.1309e5;       % overall heat flow [W m^-2]
+A = 0.5967;             % Wing surface [m^2]
+whf = 257.0520;         % Wall Heat flux at stagnation point [W m^-2]
+                        % -> value from simulation
 
-alpha = Q_dot / ( A * ( tw - tf ));
+% Material properties for air at 25C
+
+cp = 1007;              % [J kg^-1 K^-1] Heat transfer coefficient
+eta = 18.48e-6;         % [kg m?-1 s^-1] Dynamic viscosity 
+lambda = 26.06e-3;      % [W K^-1 m^-1] Thermal conductivity 
+ypsilon = 15.82e-6;     % [m^2 s?-1] Kinematic viscosity
+
+
+
+R_LE = 1.1019 * power( t, 2 );  % [m] Radius Leading edge
+l = R_LE * 2;           % [m] Characteristic length scale 
+
+
+% Reynolds number
+Re = w * l / ypsilon;
+
+%% Theoretical values according to the fluid properties
+
+% Prandtl number
+Pr_id = cp * eta / lambda;
+
+% Nu?elt number
+Nu_id = 1.14 * power( Pr_id, 0.4 ) * power( Re, 0.5 );
+
+% Froude number
+Fr_id = Nu_id / power( Re, 0.5 );
+
+% Heat transfer coefficient
+alpha_id = Nu_id * lambda / l;
+
+
+%% Values with the Heat Transfer coefficient obtained from the simulation
+
+% Heat transfer coefficient
+alpha = whf / ( tw - tf );
+
+% Nu?elt number
 Nu = alpha * l / lambda;
+
+% Froude number
+Fr = Nu / power( Re, 0.5 );
 
 
 
