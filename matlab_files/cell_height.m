@@ -3,7 +3,7 @@
 % Title:            cell_height.m
 % Version:          1.0
 % Author:           Stefan Lengauer
-% Date:             16 Februar 2015
+% Date:             16th February 2015
 % Description:      File for creating and saving the plots of the data
 %                   obtained from CFX-Post.
 %

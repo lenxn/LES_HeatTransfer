@@ -3,10 +3,10 @@
 % Title:            wall_heat_flux_plot.m
 % Version:          1.0
 % Author:           Stefan Lengauer
-% Date:             15 Februar 2015
+% Date:             15th February 2015
 % Required Files:   wall_heat_flux_stationary.csv
 %                   wall_heat_flux_transient.csv
-% Description:      File for creating and saving the plots of the data
+% Description:      Script for creating and saving the data plots
 %                   obtained from CFX-Post.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,5 +41,4 @@ ylabel( 'Wall Heat Flux [W m^-2]' )
 %% Save Plot
 saveas( figure(1), '../images/Wall_Heat_Flux_Plot.png', 'png' )
 
-sum_stat = trapz( x_stat, y_stat )
-sum_trans = trapz( x_trans, y_trans )
+
