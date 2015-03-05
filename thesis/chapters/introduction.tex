@@ -1,1 +1,102 @@
-This is the introduction.
+This is no subsection.
+\section{Basics of turbulent flows}
+Independent of their complexety, all flows become unstable above a certain Reynolds number. While flows are usually laminar at low Reynolds numbers they become more and more turbulent, when it increases. This specific value when the flow turns over from laminar to chaotic is called critical Reynolds number.
+
+Turbulences have always three-dimensional spacial character, even if the velocities and pressure vary just in one or two dimensions. The typical sighns of turbulence are the so-called turbulent eddies which are basically rotational flow structures as they can be seen in fig ... . There eddies come with a wide range of various length- and time scales. Due to this rotational flow fields, particles which are initially seperated by long distances can be brought together quickly, which leads to a high efficiency in terms of heat, mass and momentum exchange.
+
+Altough turbulent flows are highly caotic and almost impossible to predict over longer periods of time, the characterisic lenghs of the large eddies is proportional to the considered flow problem. An important term which has to be considered in this term is the energy cascade. In a typical turbulent flow kinetic energy is handed down from the large scale eddies, which are by far the most energetic ones, to the smaller ones. Figure xx shows the spectral energy of eddies dependant on their size. Obviously the smalles eddies hold by far the least energie. The large eddies get their energy from the mean flow and break up in the smaller scales. The Reynolds number of the smales scales equals one, which means that the intertia and the viscous effects are of equal strength. All the work they perform is against the viscous stresses and therfore all the energy they hold dissipates into internal thermal energy.
+\section{CFD attempts to deal with turbulence}
+In Computational Fluid Dynamics there are different ways in order to deal with turbulent flows. All natural flows are more or less turbulent, but in the calculation of flows the turbulences are usually only resolved to a certain degree or omitted at all. Methods for calculation of flows can be organized according to their turbulence resolving capability.
+
+The so called RANS (Reynolds Averaged Navier-Stokes) equations ...
+This method yields time averaged properties of the flow like mean velocities, mean pressures, mean stresses, etc. For many technical flow investigation this is enough and therfore this simulation type has been the method of choice for CFD calculations for the past decades. Other advantages are the modest demand on ressources and that two dimmensional calculations are sufficient.
+The RANS equations for incompressible flow lead to six additional stresses, known as the Reynolds stresses. This stresses are unknown and for computing turbulent flows they need to be predicted by dedicated turblence models like the k-e model.
+
+The LES (Large Eddy Simulation) represents a sort of compromise between RANS equations and DNS (Direct Numerical Simulation). It has high demands on storage and CPU performance sine unsteady flows need to be computed. Nevertheless, due to the fast improvement of hardware, this method becomes more and more applicable, even for more complex flow problems. As the title suggest this project concentrates mostly on this kind of simulation and therfore it will be discussed in more detail in the following chapters.
+
+With DNS (Direct Numerical Simulation) all scales of turblence are simulated numerical. Therfore a three dimensional is needed which is at least as fine as the the smalest scale eddy. Additionally the timestep needs to be small enough to resolve even the fastest flunctuation. This leads to a tremendous demand of ressources and mesh quality and therefore it is nowadays only performed for academic researches on rather small and simple geometries.
+
+There exist also a lot of sub-forms and mixtures of various approaches, like DES (Detached Eddy Simulation), VLES (Very Large Eddy Simulation), etc., but to mention them would go beyond the scope of this report.
+
+For the project the RANS and the LES simulation have been applied. This chapter is dedicated to introduce the reader to some crucial basics of LES. Therefore it will cover the terms fine structure model, turbulence model and wall function. Due to the numberous different models, equations and the like, each subchapter will deal only with the stuff used for this particual project.
+
+The last subchapter will cover the term heat transfer which is used frequently during this thesis and is also part of the title.
+\section{Basic idea of Large Eddy Simulation}
+Turbulences appear in a great range of shapes and sizes. ... 
+Large scale eddies dependend of the geometry, well ordered and carry a lot of energy. The smaller scale ones are breakdown products of the large eddies and have therfore much less energy. They show a very transient and chaotic behavior. The basic idea behind the Large Eddy Simulation ist o resolve the large eddies numerically while smaller ones are modeled with dedicated functions. There are special filters applied with divide the turbulences according to their scales into GS (grid scale) and SGS (sub-grid scale).
+
+In comparison to the RANS the LES need much less modelling since the small eddies present just a small amount of the overall energy.
+\section{Fine structure model}
+A majority of the scientific research concerning LES is dedicated to the developement of the so called fine structure modells. They are used to represent the impact SGS symbolically by dissipating as much energy as it would be the case with a DNS modell of the same problem. Most of the fine structure modells used today are deterministic. Therefore the FS (Fine Structure) model is dependend of the velocity field and yields exactly on solution.
+
+The finer the applied filter is, the more eddies are modelled numericaly and therfore the FS model can be simpler while leading to a similar accurate solution. If the filter becomes, theoretically, indefinitely small the LES passes into a DES. The other margin case would be a very [rau] filter which allows only the most energized eddies. This kind of simulation is known as VLES (Very Large Eddy Simulation).
+
+This circumstances offer two possible options in order to improve the simulation. There can be improved either the FS model or the used grid. In most cases an improvement of the FS model is the option of choice, since a refinement of the grid leads to a much higher demand in terms of resources and comes with no warranty to provide a more accurate solution [1]. However a LES is also highly dependend on the prceding inlet circumstances as well as the wall functions.
+\section{Turbulence models}
+\subsection{k-\textepsilon  turbulence model}
+The k-\textepsilon  models are the most frequently used best prooved model for RANS turbulence. The reason for their popularity is their convincing performance in confinded flow, which is usually the case in industrial application [CFD Buch p.79]. For these simulations the k-ε model offers a good compromise between accuracy and robustness [ansys 4.1.3].
+
+This models presume an isotropic turbulent viscosity [wiki] and add two extra transport equations which need to be solved alongside the RANS flow equations.
+\begin{quote}
+``They are based on the presumption that there exists an analogy between the action of visous stresses and Reynolds stresses on the mean flow. Both stresses appear on the right hand side of the momentum equation, and in Newton’s law of viscosity the viscous stresses are taken to be proportional to the rate of deformation of fluid elements.''
+\end{quote}
+\subsection{Smagorinsky SGS model}
+The basic idea behind the Smagorinsky SGS Model is that the turbulent stresses are proportional to the mean rate of strain.
+\section{Wall models}
+\subsection{Wall function in Ansys CFX}
+\section{Heat transfer}
+Heat is a special form of energy and is stored in the chaotic movement of atomes and molecules. In a non adiabat system it is the amount of energy which resigns over the border if a temperature gradient is prevailing. The transition of the heat over the system borders is therefore called heat flux and runs always in the direction of the lower temperature.
+
+Basically there are three different ways how heat can be transfered from one system to another, which will be discussed in the following.
+\subsection{Mecanisms of heat transfer}
+With conduction, heat gets transfered between particles in \emph{unmittelbarer Nähe}. It occurs with adjacent molecules of solids or steady fluids.
+
+Between moving fluids proceedes the so-called convection. This form of heat transfer is the dominant one in liquids and gases.
+
+The last form of heat transfer is by radiation. Radiation is the transmission of energy by means of waves. It can prodeed through different material, altough no material is required for it is also capable of spreading through space. Physically, the internal energy of the radiating system is converted into multiple tiny energies, which are then emited. The movement and location of the single photones cannot be determined, but only the behavior of many photones can be described by means of an electromagnetic wave. Usually the radiation if named after its way of creation, like γ-, or X-radiation. 
+The specific radiance M of a body is given by
+\begin{equation}
+M = \varepsilon \sigma T^4
+\end{equation},
+where ε is the emission coefficient and can be taken from dedicated tables.
+\subsection{Wall heat flux in Ansys CFX}
+The most important property which will be investigated within this project is the wall heat flux. In Ansys CFX this variable represents the total heat flux into the domain, which consists of convective and radiative participations.
+
+The heat flux at a wall boundary is specified by a heat transfer coefficient hc, which is obtained from the equation
+\begin{equation}
+q_w = h_c (T_0 - T_\omega ) = q_{rad} + q_{cond}
+\end{equation}
+where T0 is the external boundary temperature and Tw is the temperature at the wall, which is provided explicitly in this project. Figure ?? pictures how the heat transfer is modelled in Ansys CFX.
+\section{Similitude of heat transfer}
+It is impossible to determine the heat transfer for every technical problem experimentally. Furtuanatelly it is possible to transfer existing results to physically simiar objects from which the heat transfer coefficient can then be obtained.
+
+The originator of this similitude theorem is Wilhelm Nußelt. The Nußelt number, which is a form of the differential equation of the heat transfer, but with dimensionless parameters, is named after him. It is the dimensionless form of the heat transfer coefficient.
+\begin{equation}
+Nu = \frac{\alpha l}{\lambda}
+\end{equation}
+Once the Nußelt number of a specific problem is known the heat transfer coefficient alpha can be easyly calculated. The Nußelt number itself is dependent from other dimensionless number which describe flow- and heat transfer processes.
+The most important ones are the Reynolds number and the Prandtl number. The Reynolds number is capable of predicting similar flow patterns in different fluid flow situations and is defined as 
+\begin{equation}
+Re = \frac{w l}{\nu}
+\end{equation}
+where omega is the caracteristic velocity of the fluid, l a caracteristic length of the problem (for example the inner radius of a pipe, which is flowed through by a fluid), and ypsilon, the kinematic viscosity of the fluid.
+The Prandtl number is named after the German physicist Ludwig Prandtl and defined as
+\begin{equation}
+Pr = \frac{\eta c_p}{\lambda}
+\end{equation}
+with $\eta$ for the dynamic viscosity of the fluid, $c_p$ as the specific heat and $\lambda$ as the thermal conductivity. As a heavily on temperature dependent material property, it can be often found tables of heat transfer properties. For air and many other gases a Prandtl number of 0.7 to 0.8 is common, under normal circumstances. Unlike the Reynolds number, the Prandl number contains no length scale variable, but is dependent only on the fluid and the fluid state.
+For forces convection the Nußelt number is a function or the Reynolds- and the Prandtl number.
+\begin{equation}
+Nu = Nu( Re, Pr )
+\end{equation}
+For many technical applications and problems the functional relation of these paramters is known. The value of the Nußelt number at the stagnation line of a cylinder with laminar flow is given by
+\begin{equation}
+Nu = 1.14Pr^{0.4} Re^{0.5}. 
+\end{equation}
+quer angeströmte Zylinder können als Platten angesehen werden, wenn für die characteristische Länge die Länge der Oberfläche verwendet wird. The Nu number and thus the heat transfer coefficient alpha increase with the Reynolds number. This leads to an improved heat transfer at higher velocities. 
+Table ?? shows, reachable, as well as for practical application common values for the heat transfer coefficient.
+
+
+
+
+

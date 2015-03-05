@@ -1,13 +1,46 @@
-\contentsline {chapter}{Abstract}{2}
-\contentsline {chapter}{Kurzfassung}{3}
-\contentsline {chapter}{List of Figures}{4}
-\contentsline {chapter}{List of Symbols}{5}
-\contentsline {chapter}{List of Tables}{6}
-\contentsline {chapter}{List of Abbreviations}{7}
-\contentsline {chapter}{\numberline {1}Introduction}{8}
-\contentsline {chapter}{\numberline {2}Methods}{9}
-\contentsline {chapter}{\numberline {3}Results}{10}
-\contentsline {chapter}{\numberline {4}Discussion}{11}
-\contentsline {chapter}{\numberline {5}Conclusion}{12}
-\contentsline {chapter}{References}{13}
-\contentsline {chapter}{\numberline {A}Appendix}{14}
+\contentsline {chapter}{Abstract}{3}
+\contentsline {chapter}{Kurzfassung}{4}
+\contentsline {chapter}{List of Figures}{5}
+\contentsline {chapter}{List of Symbols}{7}
+\contentsline {chapter}{List of Tables}{8}
+\contentsline {chapter}{List of Abbreviations}{9}
+\contentsline {chapter}{\numberline {1}Introduction}{10}
+\contentsline {section}{\numberline {1.1}Basics of turbulent flows}{10}
+\contentsline {section}{\numberline {1.2}CFD attempts to deal with turbulence}{11}
+\contentsline {section}{\numberline {1.3}Basic idea of Large Eddy Simulation}{12}
+\contentsline {section}{\numberline {1.4}Fine structure model}{12}
+\contentsline {section}{\numberline {1.5}Turbulence models}{13}
+\contentsline {subsection}{\numberline {1.5.1}k-\textepsilon turbulence model}{13}
+\contentsline {subsection}{\numberline {1.5.2}Smagorinsky SGS model}{13}
+\contentsline {section}{\numberline {1.6}Wall models}{14}
+\contentsline {subsection}{\numberline {1.6.1}Wall function in Ansys CFX}{14}
+\contentsline {section}{\numberline {1.7}Heat transfer}{14}
+\contentsline {subsection}{\numberline {1.7.1}Mecanisms of heat transfer}{14}
+\contentsline {subsection}{\numberline {1.7.2}Wall heat flux in Ansys CFX}{15}
+\contentsline {section}{\numberline {1.8}Similitude of heat transfer}{15}
+\contentsline {chapter}{\numberline {2}Methods}{17}
+\contentsline {section}{\numberline {2.1}Technology used}{17}
+\contentsline {subsection}{\numberline {2.1.1}Hardware}{17}
+\contentsline {subsection}{\numberline {2.1.2}Software}{18}
+\contentsline {section}{\numberline {2.2}Mesh generation with Ansys ICEM 14.0}{18}
+\contentsline {subsection}{\numberline {2.2.1}Y+ value}{19}
+\contentsline {section}{\numberline {2.3}Simulation setup in Ansys CFX-Pre 15.0}{20}
+\contentsline {subsection}{\numberline {2.3.1}Domain}{20}
+\contentsline {subsection}{\numberline {2.3.2}Analysis type}{20}
+\contentsline {subsection}{\numberline {2.3.3}Boundary conditions}{21}
+\contentsline {subsection}{\numberline {2.3.4}Initial conditions}{21}
+\contentsline {subsection}{\numberline {2.3.5}Solver control settings}{21}
+\contentsline {subsection}{\numberline {2.3.6}Output control}{22}
+\contentsline {subsection}{\numberline {2.3.7}Simulation control}{22}
+\contentsline {section}{\numberline {2.4}Solving with Ansys CFX-Solver-Manager 15.0}{23}
+\contentsline {chapter}{\numberline {3}Results}{24}
+\contentsline {section}{\numberline {3.1}Checking border conditions}{24}
+\contentsline {section}{\numberline {3.2}Exporting data from Ansys CFX-Post}{25}
+\contentsline {section}{\numberline {3.3}Processing in MATLAB\textsuperscript {\textregistered }}{26}
+\contentsline {chapter}{\numberline {4}Discussion}{27}
+\contentsline {section}{\numberline {4.1}Investigation of the wall heat flux}{27}
+\contentsline {subsection}{\numberline {4.1.1}Interpretation of the dimensionless numbers}{28}
+\contentsline {subsection}{\numberline {4.1.2}Comparison Large Eddy Simulation and RANS equation}{28}
+\contentsline {chapter}{\numberline {5}Conclusion}{29}
+\contentsline {chapter}{References}{30}
+\contentsline {chapter}{\numberline {A}Appendix}{31}

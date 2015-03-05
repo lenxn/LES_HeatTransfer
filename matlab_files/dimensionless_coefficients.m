@@ -22,8 +22,10 @@ w = 66.8;               % [m s^-1] Fluid velocity
 tw = 26 + 273.15;       % Temperature at the wing surface [K]
 tf = 25 + 273.15;       % Temperature of the fluid [K]
 A = 0.5967;             % Wing surface [m^2]
-whf = 257.0520;         % Wall Heat flux at stagnation point [W m^-2]
-                        % -> value from simulation
+whf_trans = 257.0520;   % Wall heat flux at stagnation point from transient
+                        % simulation [W m^-2]
+whf_stat = 253.6925;    % Wall heat flux at stagnation point from
+                        % stationary simulation [W m^-2]
 
 % Material properties for air at 25C
 
@@ -56,16 +58,31 @@ Fr_id = Nu_id / power( Re, 0.5 );
 alpha_id = Nu_id * lambda / l;
 
 
-%% Values with the Heat Transfer coefficient obtained from the simulation
+%% Values with the Heat Transfer coefficient obtained from the transient
+% simulation
 
 % Heat transfer coefficient
-alpha = whf / ( tw - tf );
+alpha_stat = whf_trans / ( tw - tf );
 
 % Nu?elt number
-Nu = alpha * l / lambda;
+Nu_stat = alpha_stat * l / lambda;
 
 % Froude number
-Fr = Nu / power( Re, 0.5 );
+Fr_trans = Nu_stat / power( Re, 0.5 );
+
+%% Values with the Heat Transfer coefficient obtained from the stationary
+% simulation
+
+% Heat transfer coefficient
+alpha_stat = whf_stat / ( tw - tf );
+
+% Nu?elt number
+Nu_stat = alpha_stat * l / lambda;
+
+% Froude number
+Fr_stat = Nu_stat / power( Re, 0.5 );
+
+
 
 
 

@@ -1,7 +1,13 @@
 \documentclass[12pt]{report}
+\usepackage[a4paper, width=159mm, top=25mm, bottom=20mm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage[autolinebreaks,useliterate]{mcode}
+\usepackage{textgreek}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\baselinestretch}{1.5}
+
 \graphicspath{ {images/} }
 
 \title{
@@ -23,10 +29,13 @@
 \tableofcontents
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
+\input{chapters/abstract}
 \chapter*{Kurzfassung}
 \addcontentsline{toc}{chapter}{Kurzfassung}
+\input{chapters/kurzfassung}
 \chapter*{List of Figures}
 \addcontentsline{toc}{chapter}{List of Figures}
+\input{chapters/list_of_figures}
 \chapter*{List of Symbols}
 \addcontentsline{toc}{chapter}{List of Symbols}
 \chapter*{List of Tables}
