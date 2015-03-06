@@ -11,9 +11,29 @@ The values for the drag coefficient for the last 200 steps are listed in table ?
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{yplus_on_airfoil.png}
-\caption{The yplus value on the airfoil surface}
-\label{yplus}
+\caption{The y+ value on the airfoil surface}
+\label{fig:yplus}
 \end{figure}
+
+\begin{table}[h]
+\centering
+\caption{Variation of the drag coefficient over the last 200 timesteps}
+\label{fig:htc_values}
+\begin{tabular}{ll}
+Timestep&Drag coefficient\\
+18,450&0.104639763906978\\
+18,460&0.104639857472925\\
+18,470&0.104639857472925\\
+18,480&0.104640124290383\\
+18,490&0.104640333687198\\
+18,500&0.104640527598881\\
+18,510&0.104640735058614\\
+18,520&0.104640635962194\\
+18,530&0.104640528407586\\
+18,540&0.104640719551398\\
+18,550&0.104640922019082\\
+\end{tabular}
+\end{table}
 %%
 \section{Exporting data from Ansys CFX-Post}
 For investigating the heat transfer a polyline was inserted exactly at the middle of the wing, in terms of depth in z-direction. The polyline was obtained by intersecting the wing surface with a xy-plane, which was inserted at 0.15m in z-direction. 
@@ -21,7 +41,14 @@ Subsequent the properties X-coordinate and Wall Heat Flux on this polyline were 
 
 For comparison and evaluation purpose the same flow problem was simulated by Mr. Hassler as stationary simulation. The resolution file of this simulation was proceeded the same way, so that there could be exported a csv-file with the stationary data as well.
 \section{Processing in MATLAB\textsuperscript{\textregistered}}
-As next step the csv-files were imported into Matlab, where the data was extracted and used for plotting the wall heat flux over the wing length. For comparison reason both results, the stationary as well as the transient one, were displayed in the same plot, which can be seen in Figure 3.2. 
+As next step the csv-files were imported into Matlab, where the data was extracted and used for plotting the wall heat flux over the wing length. For comparison reason both results, the stationary as well as the transient one, were displayed in the same plot, which can be seen in Figure \ref{fig:whf_plot}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{Wall_Heat_Flux_Plot.png}
+\caption{Distribution of the wall heat flux on the wing surface per unit depth}
+\label{fig:wtf_plot}
+\end{figure}
 
 This data for the heat transfer was the basis for the calculation of diverse dimensionless numbers, which were of major importance for the evaluation of the simulation.
 In detail, the Nußelt and the Froude number were used for comparison. For a cylinder the Froude number is more or less equal to one. This was utilized for the evaluation, since the nose of the airfoil can be compared to a cylinder.

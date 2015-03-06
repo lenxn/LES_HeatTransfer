@@ -27,9 +27,42 @@ ANSYS CFX is the solving software used for this project. It is a high-performanc
 
 The following subchapters are divided according the the software tool, used for this step.
 \section{Mesh generation with Ansys ICEM 14.0}
-The meshed NACA 0012 airfoil was provided as two-dimensional C-grid mesh by Dr. Wolfgang Hassler with a total of 219,000 elements and can be seen in fig. xx. It is meshed with hexahedral elements and features a total of 219,000 elements. The domain shows physical meassurements of 7m by 5m while the wing profile inside the domain shows a chord length of 1m due to the nature of the profile a maximum thickness of 12\%, which would therefore be 0.12m in total values. On the left side is located the inlet, on the right the outlet and the upper and lower border are defined as walls, as you can see in figure xxx.
+The meshed NACA 0012 airfoil was provided as two-dimensional C-grid mesh by Dr. Wolfgang Hassler with a total of 219,000 elements and can be seen in fig. xx. It is meshed with hexahedral elements and features a total of 219,000 elements. The domain shows physical meassurements of 7m by 5m while the wing profile inside the domain shows a chord length of 1m due to the nature of the profile a maximum thickness of 12\%, which would therefore be 0.12m in total values. On the left side is located the inlet, on the right the outlet and the upper and lower border are defined as walls, as you can see in figure \ref{fig:init_mesh}. Figure \ref{fig:mesh_closeup} shows the incredible refinement at the airfoil surface.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{initial_geometry_1.png}
+\caption{Provided domain with mesh refinement in viscinity of the wing surface}
+\label{fig:init_mesh}
+\end{figure}
 
-Due to the three dimensional characteristics of the Large Eddies this two dimensional mesh was not sufficient, but had to be extended in the third dimenstion, in order to be capable of providing convincing results. This was achieved by simply extending the given mesh in the third direction by thirty elements. This leads to a total of 2,263,000 elements and 2,172,810 nodes. The properties of the final mesh, as it was exported from Ansys ICEM and can be seen in table 2.2.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{initial_mesh_3.png}
+\caption{Closeup to the mesh at the airfoil surface}
+\label{fig:mesh_closeup}
+\end{figure}
+
+Due to the three dimensional characteristics of the Large Eddies this two dimensional mesh was not sufficient, but had to be extended in the third dimenstion, in order to be capable of providing convincing results. This was achieved by simply extending the given mesh in the third direction by thirty elements, as it can be seen in figure \ref{fig:mesh_iso}. This leads to a total of 2,263,000 elements and 2,172,810 nodes. The properties of the final mesh, as it was exported from Ansys ICEM and can be seen in table \ref{tab:mesh_prop}.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{3d_mesh_2.png}
+\caption{Closeup of the meshed geometry in isotropic view}
+\label{fig:mesh_iso}
+\end{figure}
+\begin{table}[h]
+\centering
+\caption{Properties of the mesh}
+\label{tab:mesh_prop}
+\begin{tabular}{ll}
+Domain length&7m\\
+Domain height&5m\\
+Domain width&0.3m\\
+Profile chord length&1m\\
+Maximum profile thickness&0.12m\\
+\end{tabular}
+\end{table}
+
+
 \subsection{Y+ value}
 For the Large Eddy Simulation it is crucial to score a Y+ value at around 1. There exist formulas for estimating the first cell height in order to achieve a desired Y+ value.
 The definition of the Y+ value is
@@ -47,7 +80,14 @@ for internal flows.
 
 Although the Y+ value is dependend from time and location for simple geometries and flows, such as the one used for this simulation, this correlation is highly accurate.
 
-For the calculation of the Δy value a short MATLAB script has been applied, with the formulas from above implemented. It yielded a result of ?? for the cell closest to the wing surface. An investigation of the given geometry in Ansys ICEM showed that the height of this cell features a cell height of 9.55e-7, which is already beneath the desired value and therefore a refinement of the 2D mesh was not necessary. 
+For the calculation of the Δy value a short MATLAB script has been applied, with the formulas from above implemented. It yielded a result of ?? for the cell closest to the wing surface. An investigation of the given geometry in Ansys ICEM (figure \ref{fig:y1_height}) showed that the height of this cell features a cell height of 9.55e-7, which is already beneath the desired value and therefore a refinement of the 2D mesh was not necessary. 
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{wall_cell.png}
+\caption{Meassurement of the height of the cell next to the wing surface}
+\label{fig:y1_height}
+\end{figure}
+
 \section{Simulation setup in Ansys CFX-Pre 15.0}
 There have been two simulations set up in Ansys CFX-Pre, linked together with [Simulation Control?]. The first one is a stationary RANS simulation with the task to provide a fully developed flow field as initial condition for the subsequent LES. In Ansys CFX they were entitled according to their simulation type ``Stationary'' and ``Transient''.
 
@@ -77,6 +117,20 @@ However, when running the solver it became obvious, that the usage of this advec
 As an initial … try the number of maximum coefficient loops has been set to 10. However if the size of the timestep requires more than tree to five coefficient loops the result can be considered as inaccurate [3]. After starting with this initial value and reviewing the solver output the value was adjusted to … .
 
 As convergence criteria a root mean square of below 1e-6 of the residual target has been demanded.
+
+\begin{table}[h]
+\centering
+\caption{Adjustment of the blend factor with respect to the timestep interval}
+\label{tab:blend_factor}
+\begin{tabular}{ll}
+Timestep interval&Blend factor\\
+\hline
+1 ... 10,000&0.5\\
+10,001 ... 15,000&0.3\\
+15,001 ... 18,555&0.1\\
+\end{tabular}
+\end{table}
+
 \subsection{Output control}
 Due to numberous timesteps and the resulting large amount of data, only the results of every thenth timestep have been permanently saved to the disk. Furthermore the output of the Transient Results has been limited to the variables Pressure, Wall Heat Flux, ... and the output of the Transients Stats to the variables ... to further decrease the necessary storage.
 For easy restorage after a shutdown or the like, a full backup has been automatically produced on every hundred timestep.

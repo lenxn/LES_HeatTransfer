@@ -1,7 +1,13 @@
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Heat transfer model in Ansys CFX}}{15}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Provided domain with mesh refinement in viscinity of the wing surface}}{20}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Closeup to the mesh at the airfoil surface}}{21}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Closeup of the meshed geometry in isotropic view}}{22}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Meassurement of the height of the cell next to the wing surface}}{24}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The yplus value on the airfoil surface}}{25}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The y+ value on the airfoil surface}}{29}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Distribution of the wall heat flux on the wing surface per unit depth}}{31}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
