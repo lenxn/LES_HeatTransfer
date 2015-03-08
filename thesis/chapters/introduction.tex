@@ -1,6 +1,10 @@
-The academic discipline of CFD (Computational Fluid Dynamics) emerged in the 1970s as alternative to the experimental and the theoretical approach for the prediction of flows. It relies on the physical modelling of a flow as mathematical problem which is then solved numerical. Nevertheless was not lagged behind for a long time due to the tremendous complexity of the underlying models for the description of fluid flows, which should be at the same time economical and physical sufficient correct.
+The academic discipline of CFD (Computational Fluid Dynamics) emerged in the 1970s as alternative to the experimental and the theoretical approach for the prediction of flows. It relies on the physical modelling of a flow as mathematical problem which is then solved numerical. Nevertheless was not lagged behind for a long time due to the tremendous complexity of the underlying models for the description of fluid flows, which should be at the same time economical and physical sufficient correct. Although it comes with huge hardware costs, especially for the LES, it is usually still more econimical than an experimental facility and comes with various advantages like the capability of the investigation of very large systems, or systems under hazardous conditions.
 
 The analysis and prediction of turbulent flows is a critical factor for the comprehension of natural and technical flow processes. This basis is necessary for the improvement of objects sourounded by a flow like aircraft.
+
+The LES is a subdomain of the CFD and features dedicated filters which reject the smaller eddies and let the larger ones pass. This is done prior to the computation and the smaller eddies are represented by turbulence models. The LES is usually more effort to implement and wrong choices of the models often leads to strong deviations of the results from the actual flow.
+
+This chapter covers the basics of turbulent flows before it deals with the technical principles of LES and heat transfer.
 
 \section{Basics of turbulent flows}
 Independent of their complexety, all flows become unstable above a certain Reynolds number. While flows are usually laminar at low Reynolds numbers they become more and more turbulent, when it increases. This specific value when the flow turns over from laminar to chaotic is called critical Reynolds number.
@@ -8,6 +12,9 @@ Independent of their complexety, all flows become unstable above a certain Reyno
 Turbulences have always three-dimensional spacial character, even if the velocities and pressure vary just in one or two dimensions. The typical sighns of turbulence are the so-called turbulent eddies which are basically rotational flow structures as they can be seen in fig ... . There eddies come with a wide range of various length- and time scales. Due to this rotational flow fields, particles which are initially seperated by long distances can be brought together quickly, which leads to a high efficiency in terms of heat, mass and momentum exchange.
 
 Altough turbulent flows are highly caotic and almost impossible to predict over longer periods of time, the characterisic lenghs of the large eddies is proportional to the considered flow problem. An important term which has to be considered in this term is the energy cascade. In a typical turbulent flow kinetic energy is handed down from the large scale eddies, which are by far the most energetic ones, to the smaller ones. Figure xx shows the spectral energy of eddies dependant on their size. Obviously the smalles eddies hold by far the least energie. The large eddies get their energy from the mean flow and break up in the smaller scales. The Reynolds number of the smales scales equals one, which means that the intertia and the viscous effects are of equal strength. All the work they perform is against the viscous stresses and therfore all the energy they hold dissipates into internal thermal energy.
+ 
+Turbulences appear in a great range of shapes and sizes. ... 
+
 \section{CFD attempts to deal with turbulence}
 In Computational Fluid Dynamics there are different ways in order to deal with turbulent flows. All natural flows are more or less turbulent, but in the calculation of flows the turbulences are usually only resolved to a certain degree or omitted at all. Methods for calculation of flows can be organized according to their turbulence resolving capability.
 
@@ -15,7 +22,7 @@ The so called RANS (Reynolds Averaged Navier-Stokes) equations ...
 This method yields time averaged properties of the flow like mean velocities, mean pressures, mean stresses, etc. For many technical flow investigation this is enough and therfore this simulation type has been the method of choice for CFD calculations for the past decades. Other advantages are the modest demand on ressources and that two dimmensional calculations are sufficient.
 The RANS equations for incompressible flow lead to six additional stresses, known as the Reynolds stresses. This stresses are unknown and for computing turbulent flows they need to be predicted by dedicated turblence models like the k-e model.
 
-The LES (Large Eddy Simulation) represents a sort of compromise between RANS equations and DNS (Direct Numerical Simulation). It has high demands on storage and CPU performance sine unsteady flows need to be computed. Nevertheless, due to the fast improvement of hardware, this method becomes more and more applicable, even for more complex flow problems. As the title suggest this project concentrates mostly on this kind of simulation and therfore it will be discussed in more detail in the following chapters.
+The LES (Large Eddy Simulation) represents a sort of compromise between RANS equations and DNS (Direct Numerical Simulation). It has high demands on storage and CPU performance sine unsteady flows need to be computed. Nevertheless, due to the fast improvement of hardware, this method becomes more and more applicable, even for more complex flow problems. As the title suggest this project concentrates mostly on this kind of simulation and therfore it will be discussed in more detail in the following.
 
 With DNS (Direct Numerical Simulation) all scales of turblence are simulated numerical. Therfore a three dimensional is needed which is at least as fine as the the smalest scale eddy. Additionally the timestep needs to be small enough to resolve even the fastest flunctuation. This leads to a tremendous demand of ressources and mesh quality and therefore it is nowadays only performed for academic researches on rather small and simple geometries.
 
@@ -23,20 +30,19 @@ There exist also a lot of sub-forms and mixtures of various approaches, like DES
 
 For the project the RANS and the LES simulation have been applied. This chapter is dedicated to introduce the reader to some crucial basics of LES. Therefore it will cover the terms fine structure model, turbulence model and wall function. Due to the numberous different models, equations and the like, each subchapter will deal only with the stuff used for this particual project.
 
-The last subchapter will cover the term heat transfer which is used frequently during this thesis and is also part of the title.
-\section{Basic idea of Large Eddy Simulation}
 -LES vereinigt elemente aus sehr unterschiedlichen bereichen, insbesondere physik, numerik und turbulenzmodellierung.
-Turbulences appear in a great range of shapes and sizes. ... 
-Large scale eddies dependend of the geometry, well ordered and carry a lot of energy. The smaller scale ones are breakdown products of the large eddies and have therfore much less energy. They show a very transient and chaotic behavior. The basic idea behind the Large Eddy Simulation ist o resolve the large eddies numerically while smaller ones are modeled with dedicated functions. There are special filters applied with divide the turbulences according to their scales into GS (grid scale) and SGS (sub-grid scale).
+\section{Basic idea of Large Eddy Simulation}
+Although there have been huge efforts for developing turbulence models since the early days of CFD, a model suitable for a wide range of practial applications and offering convincing results does still not exist. This is due to the very different properties of the different scales of eddies. The smaller eddies are almost isotropic and show universial behaviour while the larger ones interact with and extract energie from the main flow. Their behaviour is heavily dependent on the used geometry and the boundary conditions.
+The big advantage of LES is that the larger eddies are computed with a time dependent simulation, while the smaller scales are still represtented by models. However, since the smaller scales are breakdown products of the larger one and represent just a small amount of the overall energy, they are easier to model. With Reynolds-averaged equations on the other hand \emph{all} scales need to be represented by a single turbulence model, which proves especially for the larger eddies inaccurate.
 
-In comparison to the RANS the LES need much less modelling since the small eddies present just a small amount of the overall energy.
-\section{Fine structure model}
-A majority of the scientific research concerning LES is dedicated to the developement of the so called fine structure modells. They are used to represent the impact SGS symbolically by dissipating as much energy as it would be the case with a DNS modell of the same problem. Most of the fine structure modells used today are deterministic. Therefore the FS (Fine Structure) model is dependend of the velocity field and yields exactly on solution.
+The classification of \emph{small} and \emph{large} eddies is done with dedicated filter functions, which take a \emph{cutoff} width as input parameter. When applied the filter function destroy all the information related to the eddies which are beyond this scale, while the rest remains untouched and gets computated. To describe this association the terms GS (grid scale) and SGS (sub-grid scale) are used. When the smaller ones are left out, also their effect on the flow is omitted. This effect is known as SGS stresses and have to be described by means of so-called SGS models, which are basically turbulence models.
 
 The finer the applied filter is, the more eddies are modelled numericaly and therfore the FS model can be simpler while leading to a similar accurate solution. If the filter becomes, theoretically, indefinitely small the LES passes into a DES. The other margin case would be a very [rau] filter which allows only the most energized eddies. This kind of simulation is known as VLES (Very Large Eddy Simulation).
 
 This circumstances offer two possible options in order to improve the simulation. There can be improved either the FS model or the used grid. In most cases an improvement of the FS model is the option of choice, since a refinement of the grid leads to a much higher demand in terms of resources and comes with no warranty to provide a more accurate solution. However a LES is also highly dependend on the preceding inlet circumstances as well as the wall functions.
+
 \section{Turbulence models}
+A majority of the scientific research concerning LES is dedicated to the developement of the so called fine structure modells. They are used to represent the impact SGS symbolically by dissipating as much energy as it would be the case with a DNS modell of the same problem. Most of the fine structure modells used today are deterministic. Therefore the FS (Fine Structure) model is dependend of the velocity field and yields exactly on solution.
 \subsection{k-\textepsilon turbulence model}
 The k-\textepsilon  models are the most frequently used best prooved model for RANS turbulence. The reason for their popularity is their convincing performance in confinded flow, which is usually the case in industrial application [CFD Buch p.79]. For these simulations the k-ε model offers a good compromise between accuracy and robustness [ansys 4.1.3].
 
@@ -44,8 +50,29 @@ This models presume an isotropic turbulent viscosity [wiki] and add two extra tr
 \begin{quote}
 ``They are based on the presumption that there exists an analogy between the action of visous stresses and Reynolds stresses on the mean flow. Both stresses appear on the right hand side of the momentum equation, and in Newton’s law of viscosity the viscous stresses are taken to be proportional to the rate of deformation of fluid elements.''
 \end{quote}
-\subsection{Smagorinsky SGS model}
-The basic idea behind the Smagorinsky SGS Model is that the turbulent stresses are proportional to the mean rate of strain.
+\subsection{Smagorinsky-Lilly SGS model}
+The Smagorinsky-Lilly SGS model bases on the assumption that the turbulent stresses are proportional to the mean rate of strain. This approach requires the changes in the flow direction to be slow in order to balance the production and dissipation of turbulence. Furthermore the turbulence structures should be isotropic.
+\begin{quote}
+``Thus, in Smagorinsky's SGS model the local SGS stresses $R_{ij}$ are taken to be proportional to the local rate of strain of the resolved flow $\bar{S_{ij}} = \frac{1}{2}(\partial \bar{u_i}/\partial x_j + \partial \bar{u_j}/\partial x_i)$:''
+\end{quote}
+This leads to the equation
+\begin{equation}
+R_{ij} = -2 \mu_{SGS} \bar{S_{ij}} + \frac{1}{3} R_{ij} \delta{ij} = -\mu_{SGS} \left( \frac{\partial \bar{u_i}}{\partial x_j} + \frac{\partial \bar{u_j}}{\partial x_i} \right) + \frac{1}{3} R_{ii} \delta{ij}.
+\end{equation}
+The additional term on the right hand side of the equation is responsible that the formula yields the correct results for the normal stresses $\tau_{xx}$, $\tau_{yy}$ and $\tau{zz}$. Due to the deffinition of the Kronecker symbol this term becomes zero for any other stresses. The constant which determines the relation between local stresses and local rate of strain is the dymamic SGS viscosity $\mu_{SGS}$.
+The Smagorinsky-Lilly model bases on Prandtl's mixing length model, which comes with the assumption that the kinematic turbulent viscosity $\nu_t$ can be expressed through the velocity scale $\vartheta$ and the turbulent length scale $l$ by
+\begin{equation}
+\nu_t = C \vartheta l .
+\end{equation}
+Here $C$ is a dimensionless constant of proportionality. The dynamic viscosity $\mu_{SGS}$ can then simply be obtained by $\mu_{SGS} = \nu{SGS} \rho$. For the lengh scale the cutoff width $\Delta$, used for the filter, is the logic choice.
+\begin{quote}
+``As in the mixing length model, the velocity scale is expressed as the product of the length scale $\Delta$ and the average strain rate of the resolved flow $\Delta \times |\bar{S}|$, where $|\bar{S}| = \sqrt{2 \bar{S_{ij}} \bar{S_{ij}}}$.''
+\end{quote}
+Hence the dynamic SGS viscosity can be taken as
+\begin{equation}
+\mu_{SGS} = \rho (C_{SGS} \Delta)^2 |\bar{S}| = \rho(C_{SGS} \Delta)^2 sqrt{2 \bar{S_{ij}} \bar{S_{ij}}}
+\end{equation}
+where $C_{SGS}$ is a constant. According to various studies values between 0.1 and 0.24 proved to be appropriate, but occasionally this paramter needs adjustment in order to provide reasonable results.
 \section{Wall models}
 \subsection{Wall function in Ansys CFX}
 \section{Heat transfer}
