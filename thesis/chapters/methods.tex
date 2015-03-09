@@ -30,14 +30,14 @@ The following subchapters are divided according the the software tool, used for 
 The meshed NACA 0012 airfoil was provided as two-dimensional C-grid mesh by Dr. Wolfgang Hassler with a total of 219,000 elements and can be seen in fig. xx. It is meshed with hexahedral elements and features a total of 219,000 elements. The domain shows physical meassurements of 7m by 5m while the wing profile inside the domain shows a chord length of 1m due to the nature of the profile a maximum thickness of 12\%, which would therefore be 0.12m in total values. On the left side is located the inlet, on the right the outlet and the upper and lower border are defined as walls, as you can see in figure \ref{fig:init_mesh}. Figure \ref{fig:mesh_closeup} shows the incredible refinement at the airfoil surface.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{initial_geometry_1.png}
+\includegraphics[scale=0.3]{initial_geometry_1.png}
 \caption{Provided domain with mesh refinement in viscinity of the wing surface}
 \label{fig:init_mesh}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{initial_mesh_3.png}
+\includegraphics[scale=0.3]{initial_mesh_3.png}
 \caption{Closeup to the mesh at the airfoil surface}
 \label{fig:mesh_closeup}
 \end{figure}
@@ -45,7 +45,7 @@ The meshed NACA 0012 airfoil was provided as two-dimensional C-grid mesh by Dr. 
 Due to the three dimensional characteristics of the Large Eddies this two dimensional mesh was not sufficient, but had to be extended in the third dimenstion, in order to be capable of providing convincing results. This was achieved by simply extending the given mesh in the third direction by thirty elements, as it can be seen in figure \ref{fig:mesh_iso}. This leads to a total of 2,263,000 elements and 2,172,810 nodes. The properties of the final mesh, as it was exported from Ansys ICEM and can be seen in table \ref{tab:mesh_prop}.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{3d_mesh_2.png}
+\includegraphics[scale=0.3]{3d_mesh_2.png}
 \caption{Closeup of the meshed geometry in isotropic view}
 \label{fig:mesh_iso}
 \end{figure}
@@ -83,7 +83,7 @@ Although the Y+ value is dependend from time and location for simple geometries 
 For the calculation of the Δy value a short MATLAB script has been applied, with the formulas from above implemented. It yielded a result of ?? for the cell closest to the wing surface. An investigation of the given geometry in Ansys ICEM (figure \ref{fig:y1_height}) showed that the height of this cell features a cell height of 9.55e-7, which is already beneath the desired value and therefore a refinement of the 2D mesh was not necessary. 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{wall_cell.png}
+\includegraphics[scale=0.3]{wall_cell.png}
 \caption{Meassurement of the height of the cell next to the wing surface}
 \label{fig:y1_height}
 \end{figure}

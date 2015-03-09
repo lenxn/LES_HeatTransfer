@@ -1,12 +1,14 @@
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Heat transfer model in Ansys CFX}}{17}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Experimental and numerical streamlines}}{12}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Energy spectrum of turbulence of different scales}}{13}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Heat transfer model in Ansys CFX}}{19}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Provided domain with mesh refinement in viscinity of the wing surface}}{21}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Closeup to the mesh at the airfoil surface}}{22}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Closeup of the meshed geometry in isotropic view}}{23}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Provided domain with mesh refinement in viscinity of the wing surface}}{23}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Closeup to the mesh at the airfoil surface}}{23}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Closeup of the meshed geometry in isotropic view}}{24}
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Meassurement of the height of the cell next to the wing surface}}{25}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The y+ value on the airfoil surface}}{30}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The y+ value on the airfoil surface}}{31}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Distribution of the wall heat flux on the wing surface per unit depth}}{32}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
