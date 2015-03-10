@@ -15,7 +15,7 @@ Although turbulent flows are highly chaotic and almost impossible to predict ove
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{eddies_example.png}
+\includegraphics[scale=0.3]{eddies_example.png}
 \caption{Experimental and numerical streamlines}
 \label{fig:example}
 \end{figure}
@@ -79,8 +79,8 @@ where $C_{\mu}$ is a dimensionless constant. The additional equations for $k$ an
 \begin{equation}
 \frac{\partial(\varepsilon k)}{\partial t} + div(\rho \varepsilon U) = div \left[ \frac{\mu_t}{\sigma_{\varepsilon}} grad \varepsilon \right] + C_{1\varepsilon} \frac{\varepsilon}{k} 2 \mu_t S_{ij} S_{ij} - C_{2\varepsilon} \rho \frac{\varepsilon^2}{k}
 \end{equation}
-The left side of the equation deals with the rate of change of $k$ or $\epsilon$ plus the transport of by convection, while the right side features the transport by diffusion plus the rate of production minus the rate of destruction of the values $k$ and $\epsilon$.
-$C_{\mu}$, $\sigma_k$, $\sigma_{\epsilon}$, $C_{1\epsilon}$ and $C_{2\epsilon}$ are constants with given values for the standard $k-\epsilon$ model and are applicable for a wide range of turbulent flows.
+The left side of the equation deals with the rate of change of $k$ or $\varepsilon$ plus the transport of by convection, while the right side features the transport by diffusion plus the rate of production minus the rate of destruction of the values $k$ and $\epsilon$.
+$C_{\mu}$, $\sigma_k$, $\sigma_{\varepsilon}$, $C_{1\varepsilon}$ and $C_{2\varepsilon}$ are constants with given values for the standard $k-\varepsilon$ model and are applicable for a wide range of turbulent flows.
 
 \subsection{Smagorinsky-Lilly SGS model}
 The Smagorinsky-Lilly SGS model bases on the assumption that the turbulent stresses are proportional to the mean rate of strain. This approach requires the changes in the flow direction to be slow in order to balance the production and dissipation of turbulence. Furthermore the turbulence structures should be isotropic.
@@ -127,7 +127,7 @@ where $\varepsilon$ is the emission coefficient and can be taken from dedicated 
 \subsection{Wall heat flux in Ansys CFX}
 The most important property which will be investigated within this project is the wall heat flux. In Ansys CFX this variable represents the total heat flux into the domain, which consists of convective and radiative participations.
 
-The heat flux at a wall boundary is specified by a heat transfer coefficient hc, which is obtained from the equation
+The heat flux at a wall boundary is specified by a heat transfer coefficient $h_c$, which is obtained from the equation
 \begin{equation}
 q_w = h_c (T_0 - T_{\omega} ) = q_{rad} + q_{cond}
 \end{equation}
@@ -143,6 +143,7 @@ It is impossible to determine the heat transfer for every technical problem expe
 
 The originator of this similitude theorem is Wilhelm Nußelt. The Nußelt number, which is a form of the differential equation of the heat transfer, but with dimensionless parameters, is named after him. It is the dimensionless form of the heat transfer coefficient.
 \begin{equation}
+\label{eq:Nu1}
 Nu = \frac{\alpha l}{\lambda}
 \end{equation}
 Once the Nußelt number of a specific problem is known the heat transfer coefficient alpha can be easyly calculated. The Nußelt number itself is dependent from other dimensionless number which describe flow- and heat transfer processes.
@@ -162,7 +163,8 @@ Nu = Nu( Re, Pr )
 \end{equation}
 For many technical applications and problems the functional relation of these paramters is known. The value of the Nußelt number at the stagnation line of a cylinder with laminar flow is given by
 \begin{equation}
-Nu = 1.14Pr^{0.4} Re^{0.5}. 
+\label{eq:Nu2}
+Nu = 1.14Pr^{0.4} Re^{0.5} 
 \end{equation}
 quer angeströmte Zylinder können als Platten angesehen werden, wenn für die characteristische Länge die Länge der Oberfläche verwendet wird. The Nu number and thus the heat transfer coefficient alpha increase with the Reynolds number. This leads to an improved heat transfer at higher velocities. 
 Table \ref{fig:htc_values} shows, reachable, as well as for practical application common values for the heat transfer coefficient.

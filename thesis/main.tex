@@ -7,21 +7,16 @@
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 \renewcommand{\baselinestretch}{1.5}
-
 \graphicspath{ {images/} }
-
-\title{
-	{Thesis Title}\\
-	{\large FH Joanneum - University of Applied Sciences}\\
-	{\includegraphics{university.png}}
-}
-\author{Stefan Lengauer}
-\date{Day Month Year}
 
 
 \begin{document}
-\maketitle
+\input{chapters/titlepage.tex}
 
+\chapter*{Declaration of Academic Honesty}
+\input{chapters/declaration_of_academic_honesty}
+\chapter*{Preface}
+\input{chapters/preface}
 
 \tableofcontents
 \chapter*{Abstract}
@@ -30,15 +25,16 @@
 \chapter*{Kurzfassung}
 \addcontentsline{toc}{chapter}{Kurzfassung}
 \input{chapters/kurzfassung}
-\chapter*{List of Figures}
+\listoffigures
 \addcontentsline{toc}{chapter}{List of Figures}
-\input{chapters/list_of_figures}
 \chapter*{List of Symbols}
 \addcontentsline{toc}{chapter}{List of Symbols}
-\chapter*{List of Tables}
+\input{chapters/list_of_symbols}
+\listoftables
 \addcontentsline{toc}{chapter}{List of Tables}
 \chapter*{List of Abbreviations}
 \addcontentsline{toc}{chapter}{List of Abbreviations}
+\input{chapters/list_of_abbreviations}
 
 \chapter{Introduction}
 \input{chapters/introduction}

@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Title:            dimensionless_coefficients.m
-% Version:          1.0
+% Version:          1.2
 % Author:           Stefan Lengauer
 % Date:             3rd March 2015
 % Description:      Script for computation for the dimensionless
