@@ -5,6 +5,7 @@
 \usepackage[autolinebreaks,useliterate]{mcode}
 \usepackage{textgreek}
 \usepackage{helvet}
+\usepackage{setspace}
 \renewcommand{\familydefault}{\sfdefault}
 \renewcommand{\baselinestretch}{1.5}
 \graphicspath{ {images/} }
@@ -51,8 +52,11 @@
 \addcontentsline{toc}{chapter}{References}
 \input{chapters/references}
 
+
 \appendix
 \chapter{Appendix}
+{\setstretch{1.0}
 \input{chapters/appendix}
+}
 
 \end{document}

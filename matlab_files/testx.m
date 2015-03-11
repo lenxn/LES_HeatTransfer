@@ -43,6 +43,9 @@ for i = 1:212
     end
 end
 
+x = 1:0.1:100;
+yt = (12/100)/0.2 * ( a0*power( x, 0.5 ) + a1*x + a2*power( x, 2 ) + ...
+            a3*power( x, 3 ) + a4*power( x, 4 ));
 plot( x, yt )
 
 axis( [0, 1, 0, 1] );

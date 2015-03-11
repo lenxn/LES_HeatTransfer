@@ -20,11 +20,11 @@
 \contentsline {subsection}{\numberline {2.1.1}Hardware}{22}
 \contentsline {subsection}{\numberline {2.1.2}Software}{23}
 \contentsline {section}{\numberline {2.2}Mesh generation with Ansys ICEM 14.0}{23}
-\contentsline {subsection}{\numberline {2.2.1}Y+ value}{25}
+\contentsline {subsection}{\numberline {2.2.1}y\textsuperscript {+} value}{25}
 \contentsline {section}{\numberline {2.3}Simulation setup in Ansys CFX-Pre 15.0}{26}
 \contentsline {subsection}{\numberline {2.3.1}Domain}{27}
 \contentsline {subsection}{\numberline {2.3.2}Analysis type}{27}
-\contentsline {subsection}{\numberline {2.3.3}Boundary conditions}{27}
+\contentsline {subsection}{\numberline {2.3.3}Boundary conditions}{28}
 \contentsline {subsection}{\numberline {2.3.4}Initial conditions}{28}
 \contentsline {subsection}{\numberline {2.3.5}Solver control settings}{28}
 \contentsline {subsection}{\numberline {2.3.6}Output control}{29}

@@ -13,14 +13,14 @@ Turbulences have always three-dimensional spacial character, even if the velocit
 
 Although turbulent flows are highly chaotic and almost impossible to predict over longer periods of time, the characteristic lenghts of the large eddies are proportional to the considered flow problem. An important term which has to be considered in this context is the energy cascade. In a typical turbulent flow kinetic energy is handed down from the large scale eddies, which are by far the most energetic ones, to the smaller ones. Figure \ref{fig:cascade} shows the spectral energy of eddies dependent on their size. Obviously the smaller eddies hold by far the least energy. The large eddies get their energy from the mean flow and break up in the smaller scales. The Reynolds number of the smaller scales equals one, which means that the inertia and the viscous effects are of equal strength. All the work they perform is against the viscous stresses and therefore all the energy they hold dissipates into internal thermal energy.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{eddies_example.png}
 \caption{Experimental and numerical streamlines}
 \label{fig:example}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics{energy_cascade.png}
 \caption{Energy spectrum of turbulence of different scales}
@@ -132,7 +132,7 @@ The heat flux at a wall boundary is specified by a heat transfer coefficient $h_
 q_w = h_c (T_0 - T_{\omega} ) = q_{rad} + q_{cond}
 \end{equation}
 where $T_0$ is the external boundary temperature and $T_{\omega}$ is the temperature at the wall, which is provided explicitly in this project. Figure \ref{fig:ht_in_cfx} pictures how the heat transfer is modelled in Ansys CFX.
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.5]{screenshot-heat_transfer_in_cfx.png}
 \caption{Heat transfer model in Ansys CFX}
@@ -168,7 +168,7 @@ Nu = 1.14Pr^{0.4} Re^{0.5}
 \end{equation}
 quer angeströmte Zylinder können als Platten angesehen werden, wenn für die characteristische Länge die Länge der Oberfläche verwendet wird. The Nu number and thus the heat transfer coefficient alpha increase with the Reynolds number. This leads to an improved heat transfer at higher velocities. 
 Table \ref{fig:htc_values} shows, reachable, as well as for practical application common values for the heat transfer coefficient.
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Values for heat transfer coefficient}
 \label{fig:htc_values}

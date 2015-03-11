@@ -40,5 +40,3 @@ ylabel( 'Wall Heat Flux [W m^-2]' )
 
 %% Save Plot
 saveas( figure(1), '../images/Wall_Heat_Flux_Plot.png', 'png' )
-
-

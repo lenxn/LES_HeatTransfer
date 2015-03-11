@@ -1,6 +1,37 @@
 \begin{lstlisting}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% Title:            cell_height.m
+% Version:          2.2
+% Author:           Stefan Lengauer
+% Date:             16th February 2015
+% Description:      File for computing the necessary cell height for the
+%                   cells attached to the wing surface.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear all;
+close all;
+
+% Definition of variables
+rho = 1.168;    % Density, [kg m^-3]
+U = 66.8;       % Velocity, [m/s]
+L = 1;          % Characteristic length scale, [m]
+mu = 18.48e-6;  % Dynamic viscosity [Pa*s]
+yplus = 1;      % y+, dimensionless
+
+Re = rho * U * L / mu;
+Cf = 0.079 * power( Re, -0.25 );
+
+Tau_w = 1/2 * Cf * rho * power( U, 2 );
+
+Utau = sqrt( Tau_w / rho );
+deltay = yplus * mu /( rho * Utau );
+\end{lstlisting}
+\newpage
+\begin{lstlisting}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 % Title:            wall_heat_flux_plot.m
 % Version:          1.0
 % Author:           Stefan Lengauer
@@ -41,4 +72,135 @@ ylabel( 'Wall Heat Flux [W m^-2]' )
 
 %% Save Plot
 saveas( figure(1), '../images/Wall_Heat_Flux_Plot.png', 'png' )
+\end{lstlisting}
+\newpage
+\begin{lstlisting}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Title:            dimensionless_coefficients.m
+% Version:          1.3
+% Author:           Stefan Lengauer
+% Date:             3rd March 2015
+% Description:      Script for computation for the dimensionless
+%                   coefficients, necessary for the evaluation of the 
+%                   results.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear all;
+close all;
+
+% Simulation parameters
+
+c = 1.0;                % Chord length, [m]
+t = 12/100;             % Maximum profile height, [m]
+w = 66.8;               % Fluid velocity, [m s^-1]  
+
+tw = 26 + 273.15;       % Temperature at the wing surface, [K]
+tf = 25 + 273.15;       % Temperature of the fluid, [K]
+A = 0.5967;             % Wing surface, [m^2]
+whf_trans = 257.0520;   % Wall heat flux at stagnation point from transient
+                        % simulation, [W m^-2]
+whf_stat = 253.6925;    % Wall heat flux at stagnation point from
+                        % stationary simulation, [W m^-2]
+
+% Material properties for air at 25C
+
+cp = 1007;              % Heat transfer coefficient, [J kg^-1 K^-1]
+eta = 18.48e-6;         % Dynamic viscosity, [kg m^-1 s^-1]
+lambda = 26.06e-3;      % Thermal conductivity, [W K^-1 m^-1] 
+ypsilon = 15.82e-6;     % Kinematic viscosity, [m^2 s^-1]
+
+
+
+R_LE = 1.1019 * power( t, 2 );  % Radius Leading edge, [m]
+l = R_LE * 2;                   % Characteristic length scale, [m]
+
+
+% Reynolds number
+Re = w * l / ypsilon;
+
+%% Theoretical values according to the fluid properties
+
+% Prandtl number
+Pr_id = cp * eta / lambda;
+
+% Nusselt number
+Nu_id = 1.14 * power( Pr_id, 0.4 ) * power( Re, 0.5 );
+
+% Froude number
+Fr_id = Nu_id / power( Re, 0.5 );
+
+% Heat transfer coefficient
+alpha_id = Nu_id * lambda / l;
+
+
+%% Values with the Heat Transfer coefficient obtained from the transient
+% simulation
+
+% Heat transfer coefficient
+alpha_stat = whf_trans / ( tw - tf );
+
+% Nusselt number
+Nu_stat = alpha_stat * l / lambda;
+
+% Froude number
+Fr_trans = Nu_stat / power( Re, 0.5 );
+
+%% Values with the Heat Transfer coefficient obtained from the stationary
+% simulation
+
+% Heat transfer coefficient
+alpha_stat = whf_stat / ( tw - tf );
+
+% Nusselt number
+Nu_stat = alpha_stat * l / lambda;
+
+% Froude number
+Fr_stat = Nu_stat / power( Re, 0.5 );
+\end{lstlisting}
+\newpage
+\begin{lstlisting}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Title:            drag_coefficient.m
+% Version:          1.3
+% Author:           Stefan Lengauer
+% Date:             13th February 2015
+% Required Files:   force_x_18450.csv
+%                   force_x_18460.csv
+%                   force_x_18470.csv
+%                   force_x_18480.csv
+%                   force_x_18490.csv
+%                   force_x_18500.csv
+%                   force_x_18510.csv
+%                   force_x_18520.csv
+%                   force_x_18530.csv
+%                   force_x_18540.csv
+%                   force_x_18550.csv
+% Description:      Script for computing the drag coefficient of the 
+%                   airfoil for the last 100 timesteps.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+rho = 1.1839;           % density of air at 25 degrees, [kg m^-3]
+u = 66.8;               % inlet speed, [m s^-1]
+max_thickness = 0.12;   % max thickness of the profile, [m]
+width = 0.3;            % profile width, [m]
+
+
+% initialization of the coefficient vector
+CD = zeros( 1, 11 );
+
+for i = 450:10:550
+    file = strcat( '../simulation_data/force_x_18', int2str( i ), '.csv' );
+    A = csvread( file );
+    force_x = A(:,4);
+    
+    % computation of the drag coefficient
+    index = ( i - 450 )/10 + 1;
+    CD(index) = sum( force_x ) / ...
+        ( 1/2 * rho * power( u, 2 ) * width * max_thickness );
+end
 \end{lstlisting}

@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Title:            drag_coefficient.m
-% Version:          1.2
+% Version:          1.3
 % Author:           Stefan Lengauer
 % Date:             13th February 2015
 % Required Files:   force_x_18450.csv
@@ -21,10 +21,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-rho = 1.1839;           % [kg m?3] density of air at 25 degrees
-u = 66.8;               % [m s^-1] inlet speed
-max_thickness = 0.12;   % [m] max thickness of the profile
-width = 0.3;            % [m] profile width
+rho = 1.1839;           % density of air at 25 degrees, [kg m^-3]
+u = 66.8;               % inlet speed, [m s^-1]
+max_thickness = 0.12;   % max thickness of the profile, [m]
+width = 0.3;            % profile width, [m]
 
 
 % initialization of the coefficient vector
@@ -40,6 +40,3 @@ for i = 450:10:550
     CD(index) = sum( force_x ) / ...
         ( 1/2 * rho * power( u, 2 ) * width * max_thickness );
 end
-
-
-
