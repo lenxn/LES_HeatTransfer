@@ -1,0 +1,40 @@
+
+Basics of turbulent flows
+
+- all natural flows are turbulent
+- wide range of length- and time scales
+- three-dimensional, spacial
+- chaotic behaviour (esp. smaller scales)
+- three approaches in CFD
+	+ RANS
+		standard
+		turbulences are modeled
+		economical, easy to setup
+	+ DNS
+		every single eddy simulated numberical
+		tremendous demands on resources
+		only conducted for academic researches
+	+ LES
+		simulation type used for this project
+
+- Basics of LES
+	+ compromise between RANS and DNS
+	+ larger eddies -> time dependent simulation
+	+ smaller eddies -> models (like RANS)
+	+ smaller eddies highly isotropic while larger dependent from geometry and flow conditions
+	+ for classification dedicated filter functions
+	+ high demand on resources (less than DNS)
+
+- Mesh Generation
+	+ 2D mesh provided by supervisor, DR. Hassler
+	+ extended it in z-direction (3D properties of turbulences)
+	+ fine grid next to the wall -> y+ value below one required for relevant results
+
+- Results of heat transfer
+	+ graph: x-axis - x-coordinate, y-axis - wall heat flux
+	+ blue: similar RANS simulation, received from Dr. Hassler for comparison
+		physical illogical at the front end -> should look more like LES
+		due to SST turbulence model
+	+ red: LES simulation
+		features higher heat transfer
+		
