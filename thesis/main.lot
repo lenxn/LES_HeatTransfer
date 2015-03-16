@@ -1,12 +1,12 @@
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {1.1}{\ignorespaces Values for heat transfer coefficient}}{21}
+\contentsline {table}{\numberline {1.1}{\ignorespaces \cite [p.374]{cerbe} Typical values for the heat transfer coefficient\relax }}{12}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Specification of computing hardware}}{23}
-\contentsline {table}{\numberline {2.2}{\ignorespaces Properties of the mesh}}{25}
-\contentsline {table}{\numberline {2.3}{\ignorespaces Adjustment of the blend factor with respect to the timestep interval}}{29}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Specification of computing hardware\relax }}{14}
+\contentsline {table}{\numberline {2.2}{\ignorespaces Properties of the mesh\relax }}{16}
+\contentsline {table}{\numberline {2.3}{\ignorespaces Adjustment of the blend factor with respect to the time step interval\relax }}{20}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Variation of the drag coefficient over the last 200 timesteps}}{33}
-\contentsline {table}{\numberline {3.2}{\ignorespaces Dimensionless coefficients resulting from the simulation}}{34}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Variation of the drag coefficient over the last 200 time steps\relax }}{24}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Dimensionless coefficients resulting from the simulation\relax }}{25}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

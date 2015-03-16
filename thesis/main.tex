@@ -6,10 +6,12 @@
 \usepackage{textgreek}
 \usepackage{helvet}
 \usepackage{setspace}
+\usepackage[font=small]{caption}
+
 \renewcommand{\familydefault}{\sfdefault}
 \renewcommand{\baselinestretch}{1.5}
 \graphicspath{ {images/} }
-
+\pagenumbering{roman}
 
 \begin{document}
 \input{chapters/titlepage.tex}
@@ -37,6 +39,7 @@
 \addcontentsline{toc}{chapter}{List of Abbreviations}
 \input{chapters/list_of_abbreviations}
 
+\pagenumbering{arabic}
 \chapter{Introduction}
 \input{chapters/introduction}
 \chapter{Methods}
@@ -48,7 +51,6 @@
 \chapter{Conclusion}
 \input{chapters/conclusion}
 
-\chapter*{References}
 \addcontentsline{toc}{chapter}{References}
 \input{chapters/references}
 

@@ -1,10 +1,10 @@
-With a timestep duration of 1e-5 seconds all timesteps combined make a physical simulation duration of 0.19s. Although this seems to be a rather short timespan, it proves to be sufficient, because with a velocity of 66.8m/s the flow passes the wing surface with a length of 1m five times during this simulation time. 
+With a time step duration of 1e-5 seconds all time steps combined make up a physical simulation duration of 0.19s. Although this seems to be a rather short timespan, it proves to be sufficient, because with a velocity of 66.8m/s the flow passes the wing surface with a length of 1m five times during this simulation time. 
 
-The content of this chapter deals with the investigation of the last 200 timesteps.
+The content of this chapter deals with the investigation of the last 200 time steps.
 \section{Checking accuracy requirements}
-The post-processing was conducted with Ansys CFX-Post 15.0. The first thing was checking whether the $y^+$ value on the wing surface was within the correct scope. This was done by plotting the value on the wing surface as you can see in figure \ref{fig:yplus}. Obviously it is nowhere beyond one.
+The post-processing was conducted with Ansys CFX-Post 15.0. The first thing was checking whether the $y^+$ value on the wing surface was within the correct scope. This was done by plotting the value on the wing surface as it can be see in figure \ref{fig:yplus}. Obviously it is nowhere beyond one and hence this requirement is fulfilled.
 
-Additionally the drag coefficient of the wing was mirrored over the last timesteps. When it does not change any more, it can be assumed that the simulation has reached a kind of steady state. The value for the drag coefficient was calculated in Ansys CFX-Post by the equation
+Additionally the drag coefficient of the wing was mirrored over the last time steps. When it does not change any more, it can be assumed that the simulation has reached a kind of steady state. The value for the drag coefficient was calculated in Ansys CFX-Post by the equation \cite{ochoa}
 \begin{equation}
 C_D = \frac{F_{horizontal}}{\frac{1}{2} \rho U^2 A_{eff}}
 \end{equation}
@@ -19,10 +19,10 @@ The values for the drag coefficient for the last 200 steps are listed in table \
 
 \begin{table}[ht]
 \centering
-\caption{Variation of the drag coefficient over the last 200 timesteps}
+\caption{Variation of the drag coefficient over the last 200 time steps}
 \label{tab:htc_values}
 \begin{tabular}{ll}
-Timestep&Drag coefficient\\
+Time step&Drag coefficient\\
 18,450&0.104639763906978\\
 18,460&0.104639857472925\\
 18,470&0.104639857472925\\
@@ -38,29 +38,29 @@ Timestep&Drag coefficient\\
 \end{table}
 
 \section{Exporting data from Ansys CFX-Post}
-For investigating the heat transfer a polyline was inserted exactly at the middle of the wing. It was obtained by intersecting the wing surface with a xy-plane, which was positioned at 0.15m in z-direction. 
-Subsequent the properties x-coordinate and Wall Heat Flux on this polyline were exported as csv file. This file served as input for MATLAB\textsuperscript{\textregistered} and were used for the visalisation of the results.
+For investigating the heat transfer a polyline was inserted exactly at the middle of the airfoil. It was obtained by intersecting the wing surface with a xy-plane, which was positioned at 0.15m in z-direction. 
+Subsequent the properties x-coordinate and Wall Heat Flux on this polyline were exported as csv file. This file served as input for MATLAB\textsuperscript{\textregistered} and was used for the visualization of the results.
 
 For comparison and evaluation purpose the same flow problem was simulated by Dr. Hassler by means of a RANS simulation. The result file of this simulation was treated the same way, so that there could be exported a csv file with the stationary data as well.
 
 \section{Processing in MATLAB\textsuperscript{\textregistered}}
-As next step the csv files were imported into MATLAB\textsuperscript{\textregistered}, where the data was extracted and used for plotting the wall heat flux over the length of the profile. For comparison reason both results, the stationary as well as the transient one, were displayed in the same plot, as it can be seen in Figure \ref{fig:whf_plot}.
+As next step the csv files were imported into MATLAB\textsuperscript{\textregistered}, where the data was extracted and used for plotting the wall heat flux over the length of the profile. For comparison reasons both results, the stationary as well as the transient one, were displayed in the same plot, which can be observed in figure \ref{fig:whf_plot}.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=0.8]{Wall_Heat_Flux_Plot.png}
-\caption{Distribution of the wall heat flux on the wing surface per unit depth}
+\caption{Distribution of the wall heat flux on the wing surface along the x-axis}
 \label{fig:whf_plot}
 \end{figure}
 
 This data for the heat transfer was the basis for the calculation of diverse dimensionless numbers, which were of major importance for the evaluation of the simulation.
 In detail, the Nußelt and the Froude number were used for comparison. For a cylinder the Froude number is more or less equal to one. This was utilized for the evaluation, because the nose of the airfoil can be compared to a cylinder.
-The Nußelt and Froude number have been computed with three different approaches. For the first, the Nußelt number for a cylinder, equal to the airfoil nose diameter, was generated by means of the Prandtl and the Reynolds number with the relation given in equation \ref{eq:Nu2}. This was done for comparison reason with a typical specific heat transfer coefficient of 1,005 Joules per kilgram Kelvin was applied.
-For the other two approaches the Nußelt number was computed from the values extracted from the simulation. Particularly the values of the wall heat flux at the stagnation point, where x is equal to zero, were of special interest. The stationary simulaton yielded a value of 253.69 Watt per square meter at this point and the transient one a value of 257.05 Watt per square meter. These were used  for computating the heat transfer coefficient $\alpha$, which can be obtained through the correlation
+The Nußelt and Froude number have been computed with three different approaches. For the first, the Nußelt number for a cylinder, equal to the airfoil nose diameter, was generated by means of the Prandtl and the Reynolds number with the relation given in equation \ref{eq:Nu2}. This was done for comparison reason with a typical specific heat transfer coefficient of 1,005 Joules per kilogram Kelvin applied.
+For the other two approaches the Nußelt number was computed from the values extracted from the simulation. Particularly the values of the wall heat flux at the stagnation point, where x is equal to zero, were of special interest. The stationary simulation yielded a value of 253.69 Watt per square meter at this point and the transient one a value of 257.05 Watt per square meter. These were used  for computing the heat transfer coefficient $\alpha$, which can be obtained through the correlation
 \begin{equation}
 \alpha = \frac{q}{\Delta t}
 \end{equation} 
-with $\Delta t$ as the difference of the temperatures of wall and fluid. With respect to the initial settings it was one degree. The airfoil nose diameter served as specific length scale, given by $R_{LE} = 1.1019 t^2$, with $t$ as the maximum profile height.
+with $\Delta t$ as the difference of the temperatures of wall and fluid \cite{cerbe}. With respect to the initial settings it was one degree. The airfoil nose diameter served as specific length scale, given by the radius $R_{LE} = 1.1019 t^2$ times two, with $t$ as the maximum profile height.
 The Nußelt number was then calculated by means of equation \ref{eq:Nu1}.
 In table \ref{tab:coefficients} the differences and similarities of the single approaches can be observed.
 
